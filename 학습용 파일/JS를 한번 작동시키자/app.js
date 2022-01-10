@@ -1,4 +1,4 @@
-alert("HI");
+const H1 = document.getElementById("Greet")
 
-console.log(document)
-console.dir(document)
+console.log(H1)
+console.dir(H1)
