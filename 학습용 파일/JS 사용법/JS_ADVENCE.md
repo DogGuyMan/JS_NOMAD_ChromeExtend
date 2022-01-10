@@ -19,6 +19,8 @@ document.MEMVER = ___
 
 #### 1. getElementById("*IDNAME*")
 1. 주어진 *IDNAME* 과 일치하는 id 속성을 찾고 Element 객체를 반환한다.
+2. ID는 유일해야한다. 애초에 하나의 Element만 가져옴
+<img src="2022-01-11-01-09-17.png" width="400px">
 #### 2. getElementByClassName(*"ClASSNAME"*)
 1. array 방식으로 가져온다
 #### 3. getElementByTagName("*TAGNAME*")
@@ -30,3 +32,26 @@ document.MEMVER = ___
 1. Css 선택자로 선택가능
 2. 단 하나의 Element만 가져옴
 #### 5. querySelectorALL("*CSS_SELECTOR_WAY*")
+1. Css 선택자로 선택가능
+2. Array로 가져온다.
+
+### style도 변경 가능
+
+
+## <span style="color : #83dcb7;">3. Evnet </span>
+
+```
+1. click
+2. 엔터 누르기
+3. wifi 접속 등등..
+```
+
+*이벤트 작동시키기*
+```js
+const title = document.querySelector("div.class"); // -> HTML Element 선택하기
+
+title.addEventListener("Real_EVENT", 그에따 실행할것_FUNC)); 
+//단 실행할것이 FUNC이면 ()을 붙이면 안된다.
+//() 을 붙이게 된다면 무조건적으로 실행이 되버린다.
+
+```
