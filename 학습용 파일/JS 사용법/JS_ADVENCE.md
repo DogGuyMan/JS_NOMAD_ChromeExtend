@@ -67,5 +67,22 @@ document.addEventListener("click", listener);
 *mouseenter*
 ```
 //마우스커서가 타겟위에 올라가면 발생하는 이벤트
-
 ```
+*mouseleave*
+```
+//마우스커서가 타겟위에 없다면 발생하는 이벤트
+```
+
+#### More Event
+1. 이벤트 리스너 대신 쓸수 있는 방법
+```
+title.addEventListener(type,listener);
+title.type = listener;
+```
+
+2. window Evnet
+*resize* : 브라우저 크기 변경
+*copy* : 카피했을때
+*paste* : 붙여넣기 했을때
+*offline* : 오프라인
+*online* : 온라인
