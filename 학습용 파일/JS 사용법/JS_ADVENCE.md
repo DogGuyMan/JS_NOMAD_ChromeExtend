@@ -55,3 +55,17 @@ title.addEventListener("Real_EVENT", 그에따 실행할것_FUNC));
 //() 을 붙이게 된다면 무조건적으로 실행이 되버린다.
 
 ```
+[이벤트 종류, Mozilla 재단](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)
+사실.. console.dir()으로도 확인 가능하다.
+
+*clcik*
+```
+//타겟을 클릭 하면 발생하는 이벤트
+document.addEventListener("click", listener);
+```
+
+*mouseenter*
+```
+//마우스커서가 타겟위에 올라가면 발생하는 이벤트
+
+```
