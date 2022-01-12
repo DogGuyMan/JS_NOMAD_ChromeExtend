@@ -86,3 +86,56 @@ title.type = listener;
 *paste* : 붙여넣기 했을때
 *offline* : 오프라인
 *online* : 온라인
+
+## <span style="color : #83dcb7;"> 4. CSS의 응용 </span>
+
+#### 1. CSS가 변경되는 코드는 꼭 JS로만 하지 않아도 된다.
+```css
+.clicked {
+    color : tomato;
+}
+```
+변수 작성에 오류를 줄이기 위해서는
+const로 따로 만드는 방법을 사용하는것이 좋다.
+```js
+function handleTitleClicked() {
+    const clickedClass = "clicked";
+    const noneclickedClass = "";
+    if(title.className === clickedClass){
+        title.className = noneclickedClass;
+    }
+    else{
+        title.className = clickedClass;
+    }
+}
+```
+
+#### 2. 직렬로 이어진 클래스를 조작하는법
+
+*직렬로 클래스 전부 불러오기*
+```js
+_ELEMENT.classList;
+
+//인덱스 접근
+_ELEMENT.classList[___];
+```
+단, 타입은 object이다.
+근데 인덱스 접근을 통해서 클래스리스트를 접근가능
+
+![](2022-01-13-04-08-50.png)
+
+*특정 클래스 포함 여부 확인 (클래스 리스트의 메소드)*
+```js
+_ELEMENT.classList.contains("___");
+``` 
+
+*클래스 리스트의 클래스 추가, 삭제*
+```js
+_ELEMENT.classList.add("___");
+_ELEMENT.classList.remove("___");
+``` 
+
+## <span style="color : #83dcb7;"> 5. toggle (on/off) </span>
+```js
+_ELEMENT.classList.toggle("___");
+```
