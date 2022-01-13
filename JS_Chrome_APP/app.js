@@ -7,3 +7,16 @@ const loginForm = document.querySelector(".login-form");
     //document.querySelectorAll("selector[myAttribute='aValue']");
 const loginInput = loginForm.querySelector("input[type=text]");
 const loginSubmit = loginForm.querySelector("input[type=submit]")
+const greetingTitle = document.querySelector("h1.greeting")
+
+const HIDE_CSS = "hidden";
+
+function handleLoginSubmit(_E) {
+    _E.preventDefault();
+    const userName = loginInput.value; 
+    console.log(userName);
+    loginForm.classList.add(HIDE_CSS);
+    greetingTitle.innerText = `Hello ${userName}`;
+    greetingTitle.classList.remove(HIDE_CSS);
+}
+loginForm.addEventListener("submit", handleLoginSubmit)
