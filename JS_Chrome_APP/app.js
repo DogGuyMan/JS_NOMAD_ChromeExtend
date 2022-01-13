@@ -7,22 +7,3 @@ const loginForm = document.querySelector(".login-form");
     //document.querySelectorAll("selector[myAttribute='aValue']");
 const loginInput = loginForm.querySelector("input[type=text]");
 const loginSubmit = loginForm.querySelector("input[type=submit]")
-const blogLink = document.querySelector("a");
-
-console.log(loginForm);
-console.log(loginInput);
-console.dir(loginSubmit);
-console.log(blogLink);
-
-function onLoginSubmit(event){
-    event.preventDefault();
-    console.log("YouSubmit");
-}
-loginForm.addEventListener("submit", onLoginSubmit);
-
-function handleLinkClick(event) {
-    console.log(event);
-    event.preventDefault();
-    alert("you Clicked");
-}
-blogLink.addEventListener("click", handleLinkClick);
