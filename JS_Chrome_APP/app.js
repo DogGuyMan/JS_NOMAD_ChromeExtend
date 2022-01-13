@@ -9,14 +9,31 @@ const loginInput = loginForm.querySelector("input[type=text]");
 const loginSubmit = loginForm.querySelector("input[type=submit]")
 const greetingTitle = document.querySelector("h1.greeting")
 
-const HIDE_CSS = "hidden";
+const HIDE_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+function paintGreeting(_userName) {
+    greetingTitle.innerText = `Hello ${_userName}`;
+    greetingTitle.classList.remove(HIDE_CLASSNAME);
+}
 
 function handleLoginSubmit(_E) {
     _E.preventDefault();
     const userName = loginInput.value; 
-    console.log(userName);
-    loginForm.classList.add(HIDE_CSS);
-    greetingTitle.innerText = `Hello ${userName}`;
-    greetingTitle.classList.remove(HIDE_CSS);
+    localStorage.setItem(USERNAME_KEY, userName);
+    loginForm.classList.add(HIDE_CLASSNAME);
+    paintGreeting(userName);
 }
-loginForm.addEventListener("submit", handleLoginSubmit)
+
+if(savedUsername === null){
+    greetingTitle.classList.add(HIDE_CLASSNAME);
+    loginForm.classList.remove(HIDE_CLASSNAME);
+    loginForm.addEventListener("submit", handleLoginSubmit)
+}
+else {
+    loginForm.classList.add(HIDE_CLASSNAME);
+    greetingTitle.classList.remove(HIDE_CLASSNAME);
+    paintGreeting(savedUsername);
+}

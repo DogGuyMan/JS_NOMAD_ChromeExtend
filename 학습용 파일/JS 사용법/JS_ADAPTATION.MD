@@ -38,3 +38,16 @@ _TARGET.addEventlistener(type, listener)
 ![](2022-01-13-23-00-11.png)
 
 ### <span style="color : #83dcb7;">4. 백틱 문자열</span>
+```js
+`HELLO ${_VAR}`;
+```
+
+### <span style="color : #83dcb7;">5. 저장하기</span>
+localStorage : Key - Value
+
+개발자 도구에서 Application 메뉴에 확인가능
+```js
+localStorage.setItem(,,,);
+localStorage.getItem(,,,);
+   //if 값이 없다면 null값 반환
+```
