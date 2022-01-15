@@ -81,3 +81,18 @@ clockElement.innerText =
     const second = String(date.getSeconds()).padStart(2,"0");
     clockElement.innerText = `${hours}:${minutes}:${second}`;
 ```
+# Quotes
+### <span style="color : #83dcb7;"> Math.random() </span>
+
+Math.random()
+0과 1 사이의 난수를 반환합니다.
+Math.round(x)
+숫자에서 가장 가까운 정수를 반환합니다.
+
+# BackGround
+### <span style="color : #83dcb7;"> document.createElement </span>
+바로 적용할수 있는게 아니라
+일단 HTML에 들어갈 수 있는 Element를 <> 형식으로 만들 수 있다.
+
+▽ 이제 본격적으로 원하는 위치에 적용하고 싶다면 다음 명령어를 써야한다 ▽
+### <span style="color : #83dcb7;"> .appendChild() </span>
