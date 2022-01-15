@@ -1,4 +1,5 @@
 <span style="color : #83dcb7;"></span>
+# Greeting.js
 ### <span style="color : #83dcb7;">1. html attribute를 통한 Range제한</span>
 만약 input의 텍스트를 최대 15글자로제한하고 싶으면 다음과 같다. 
 1. 일단 form 형태로 작성되어야한다
@@ -51,4 +52,32 @@ localStorage.setItem(,,,);
 localStorage.getItem(,,,);
    //if 값이 없다면 null값 반환
    //=== 으로 유무판단하자.
+```
+----------------------------------------------------------------------------
+
+# Clock.js
+### <span style="color : #83dcb7;">1. setInterval/setTimeout </span>
+setInterval : 일정 시간간격을두고 함수를 실행하는 방법
+setTimeout : 일정시간이 지난후에 함수를 실행하는 방법
+
+### <span style="color : #83dcb7;">2. padStart() </span>
+padStart(고정문자열길이, 채울문자)
+
+```js
+clockElement.innerText = 
+   `
+      ${date.getHours()}:
+      ${date.getMinutes()}:
+      ${parseInt(date.getSeconds()) < 10 ? 
+         `0${date.getSeconds()}` : date.getSeconds()}
+   `
+```
+이건 너무 코드가 길어
+
+그래서 다음과 같이 작성하면 된다.
+```js
+    const hours = String(date.getHours()).padStart(2,"0");
+    const minutes = String(date.getMinutes()).padStart(2,"0");
+    const second = String(date.getSeconds()).padStart(2,"0");
+    clockElement.innerText = `${hours}:${minutes}:${second}`;
 ```
