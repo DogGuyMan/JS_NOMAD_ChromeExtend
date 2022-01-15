@@ -50,4 +50,5 @@ localStorage : Key - Value
 localStorage.setItem(,,,);
 localStorage.getItem(,,,);
    //if 값이 없다면 null값 반환
+   //=== 으로 유무판단하자.
 ```
