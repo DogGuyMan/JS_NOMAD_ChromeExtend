@@ -7,8 +7,16 @@ const TODOLIST_KEY = "todolist";
 // X 버튼 누를때마다 실행됨
 function deleteTODO(_E){
     if(_E.target.localName === "button" || _E.target.innerText === "❌"){
+        const todoID = _E.target.parentElement.parentElement.className;
+        //console.log(todoID, typeof(todoID));
         const deleteTarget = _E.target.parentElement.parentElement;
         deleteTarget.remove();
+        todosData = todosData.filter( (i)=>{
+            //console.log(i.id, parseInt(todoID));
+            return i.id !== parseInt(todoID);
+        });
+        //console.log(todosData);
+        localStorage.setItem(TODOLIST_KEY, JSON.stringify(todosData));
     }
 }
 
@@ -21,7 +29,8 @@ function paintTODO (_todoValue){
     const AddBtn = document.createElement("button");
 
     AddLiTODO.appendChild(AddSpanTODO);
-    AddSpanTODO.innerText=_todoValue;
+    AddLiTODO.classList.add(`${_todoValue.id}`)
+    AddSpanTODO.innerText=_todoValue.todo;
     AddLiTODO.appendChild(AddSpanBtn);
     AddBtn.innerText="❌"; 
     AddSpanBtn.appendChild(AddBtn);
@@ -32,9 +41,12 @@ function paintTODO (_todoValue){
 function handleTodoSubmit(_E) {
     _E.preventDefault();
     const todoValue = todoFormInputElement.value;
-    todosData.push(todoValue);
+    
+    const newIDMAP = new idMap(todoValue);
+    todosData.push(newIDMAP);
+
     localStorage.setItem(TODOLIST_KEY, JSON.stringify(todosData));
-    paintTODO(todoValue);
+    paintTODO(newIDMAP);
     todoFormInputElement.value = "";
 }
 
@@ -43,19 +55,15 @@ todoFormElement.addEventListener("submit", handleTodoSubmit);
 todoListElement.addEventListener("click", deleteTODO)
 
 //DATA.js 저장할 todosData 형식 변경
-function todosDataPush(_todoValue) {
-    let todoMap = new idMap(_todoValue);
-    todosData.push(todoMap.Get());
-}
 
 function todoDataDelete() {
-
 }
 
 //데이터 불러오기
 let savedTODOs = localStorage.getItem(TODOLIST_KEY);
 if(savedTODOs !== null){
     todosData = JSON.parse(savedTODOs);
+    console.log(todosData);
     todosData.forEach( (i)=> {
         paintTODO(i)
     });
@@ -63,23 +71,7 @@ if(savedTODOs !== null){
 
 /*
 데이터 저장방식 변경
+    가져오는 문제도 해결해야함
 데이터 삭제
     데이터 MAP을 통해서 삭제
 */
-
-const todoIDMAPElement = document.querySelector("form.idmap-form");
-const IDMAPINPUTElement = todoIDMAPElement.querySelector("input[type=text]");
-
-console.log(todoIDMAPElement);
-
-function handleIDMAPInput(_E) {
-    _E.preventDefault();
-    const idmapInput = IDMAPINPUTElement.value;
-    let map1 = new idMap(idmapInput);
-    let map2 = new idMap("히히힛");
-    console.log(map1.Get());
-    console.log(map2.Get());
-    IDMAPINPUTElement.value = "";
-}
-
-todoIDMAPElement.addEventListener("submit", handleIDMAPInput);

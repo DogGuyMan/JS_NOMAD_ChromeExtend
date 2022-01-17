@@ -135,10 +135,22 @@ function deleteTODO(_E){
 문자열로 가져온 데이터를 파싱해서 arr으로 저장가능하다.
 
 ### <span style="color : #83dcb7;"> Array</span>
+*forEach*
 ```js
 parsedTODOs.forEach(i => {
     console.log(i);
     });
+```
+*filter(__하나의 원소를 받고 -> T/F로 반한되는 조건문혹은 함수__)*
+O(N)으로 진행되는 삭제명령어
+true -> 삭제 안됨
+false -> 삭제
+```
+filter(sextFunction)
+sextFunction(원소){
+    ...원소값을가지고 조건문 만들기...
+    return T/F; 
+}
 ```
 
 ```
@@ -180,9 +192,12 @@ unshift: ƒ unshift()
 values: ƒ values()
 ```
 
-### <span style="color : #83dcb7;"> Map-Array</span>
+### <span style="color : #83dcb7;"> Map-Array Element를 특정하자</span>
+어느 데이터가 지워져야하는지 식별하기위핸 id가 포함된 데이터를 만들자.
 ```
 const map {
     key : value;
 }
+
+array.push(map());
 ```
