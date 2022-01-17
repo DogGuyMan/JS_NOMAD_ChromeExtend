@@ -10,32 +10,37 @@
 </head>
 
 <body>
+    <!--  ------------------------------------------------------------  -->
     <h2 class="clock">00:00</h2>
+    <!--  ------------------------------------------------------------  -->
     <h1 class="greeting"></h1>
+    <!--  ------------------------------------------------------------  -->
     <form class="login-form">
         <input required maxlength="15" type="text" placeholder="이름을 입력하세요" />
         <input type="submit" value="Login" />
     </form>
+    <!--  ------------------------------------------------------------  -->
+    <form class="todo-form">
+        <input type="text" placeholder="오늘 할일을 적어주세요" required />
+    </form>
+    <!--  ------------------------------------------------------------  -->
+    <ul class="todo-list">
+
+    </ul>
+    <!--  ------------------------------------------------------------  -->
     <div class="quote-div">
         <span class="quote"></span>
         <span class="author"></span>
     </div>
-
+    <!--  ------------------------------------------------------------  -->
     <div class="background-div">
     </div>
-
-    <form class="todo-form">
-        <input type="text" placeholder="오늘 할일을 적어주세요" required />
-    </form>
-
-    <ul class="todo-list">
-
-    </ul>
-    <script defer src="JS/quotes.js"></script>
-    <script async src="JS/greeting.js"></script>
-    <script async src="JS/clock.js"></script>
-    <script async src="JS/todo.js"></script>
+    <!--  ------------------------------------------------------------  -->
     <script src="JS/Data.js"></script>
+    <script defer src="JS/quotes.js"></script>
+    <script src="JS/greeting.js"></script>
+    <script src="JS/clock.js"></script>
+    <script src="JS/todo.js"></script>
     <script src="JS/randomIndex.js"></script>
     <script src="JS/background.js"></script>
 </body>

@@ -4,8 +4,6 @@ const quoteElement = quoteDivElement.querySelector("span.quote");
 const authorElement = quoteDivElement.querySelector("span.author");
 
 const resIndex = randomIndex(quotesData);
-console.log(resIndex);
-
 quoteElement.innerText = quotesData[resIndex].quote;
 authorElement.innerText = quotesData[resIndex].author;
 

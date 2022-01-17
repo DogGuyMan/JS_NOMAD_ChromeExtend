@@ -53,3 +53,20 @@ const imagesData = [
     "img_(8).jpg",
     "img_(9).jpg"
 ];
+
+class idMap {
+    constructor(_todoValue) {
+        this.todo = _todoValue;
+        this.id = Date.id();
+    }
+    Set(_todoValue){
+        this.todo = _todoValue;
+        this.id = Date.id();    
+    }
+    Get(){
+        returnValue = {todo : this.todo, id : this.id};
+        return returnValue;
+    }
+};
+
+let todosData = [];

@@ -53,6 +53,9 @@ localStorage.getItem(,,,);
    //if 값이 없다면 null값 반환
    //=== 으로 유무판단하자.
 ```
+
+[좀더 정확한 localstorage](./JS_LOCALSTORAGE.md)
+
 ----------------------------------------------------------------------------
 
 # Clock.js
@@ -96,3 +99,90 @@ Math.round(x)
 
 ▽ 이제 본격적으로 원하는 위치에 적용하고 싶다면 다음 명령어를 써야한다 ▽
 ### <span style="color : #83dcb7;"> .appendChild() </span>
+
+# ToDoLIST
+
+[로컬스토리지저장불러오기 꼭 읽어야할것](./JS_로컬스토리지저장불러오기.md)
+
+### <span style="color : #83dcb7;"> 이벤트 발생좌표 </span>
+내가 발생시킨 이벤트의 위치가 정확히 어디인지 확인하고 싶을때
+1. 이벤트 리스너를 가지고 console.dir출력
+2. target이나 좌표를 단서를 얻자
+3. target에는 parentElement라는것이 있다. 
+
+버그 발견
+```js
+function deleteTODO(_E){
+    if(_E.target.localName === "button" || _E.target.innerText === "❌"){
+        const deleteTarget = _E.target.parentElement.parentElement;
+        deleteTarget.remove();
+    }
+}
+```
+여기에서 target.localName을 한정하지 않으면 아래의 파란부분의 클릭시
+![](2022-01-16-01-06-33.png)
+상위 태그의 요소들이 전부 삭제되는 버그가 있다.
+따라서 li 부분을 클릭하지 못하게 막아줘야한다.
+
+### <span style="color : #83dcb7;"> JSON</span>
+#### JSON.stringify(___)
+어떤 정체불명의 데이터를 string으로 변환해주는 코드이다.
+따라서 localstorage 저장시 다음을 응용한다면
+![](2022-01-16-01-10-15.png)
+와 같이 저장가능하다.
+
+### JSON.parge
+문자열로 가져온 데이터를 파싱해서 arr으로 저장가능하다.
+
+### <span style="color : #83dcb7;"> Array</span>
+```js
+parsedTODOs.forEach(i => {
+    console.log(i);
+    });
+```
+
+```
+at: ƒ at()
+concat: ƒ concat()
+constructor: ƒ Array()
+copyWithin: ƒ copyWithin()
+entries: ƒ entries()
+every: ƒ every()
+fill: ƒ fill()
+filter: ƒ filter()
+find: ƒ find()
+findIndex: ƒ findIndex()
+findLast: ƒ findLast()
+findLastIndex: ƒ findLastIndex()
+flat: ƒ flat()
+flatMap: ƒ flatMap()
+forEach: ƒ forEach()
+includes: ƒ includes()
+indexOf: ƒ indexOf()
+join: ƒ join()
+keys: ƒ keys()
+lastIndexOf: ƒ lastIndexOf()
+length: 0
+map: ƒ map()
+pop: ƒ pop()
+push: ƒ push()
+reduce: ƒ reduce()
+reduceRight: ƒ reduceRight()
+reverse: ƒ reverse()
+shift: ƒ shift()
+slice: ƒ slice()
+some: ƒ some()
+sort: ƒ sort()
+splice: ƒ splice()
+toLocaleString: ƒ toLocaleString()
+toString: ƒ toString()
+unshift: ƒ unshift()
+values: ƒ values()
+```
+
+### <span style="color : #83dcb7;"> Map-Array</span>
+```
+const map {
+    key : value;
+}
+```
