@@ -57,15 +57,14 @@ const imagesData = [
 class idMap {
     constructor(_todoValue) {
         this.todo = _todoValue;
-        this.id = Date.id();
+        this.id = Date.now();
     }
     Set(_todoValue){
         this.todo = _todoValue;
-        this.id = Date.id();    
+        this.id = Date.now();
     }
     Get(){
-        returnValue = {todo : this.todo, id : this.id};
-        return returnValue;
+        return {todo : this.todo, id : this.id};
     }
 };
 

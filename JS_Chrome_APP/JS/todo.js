@@ -66,3 +66,20 @@ if(savedTODOs !== null){
 데이터 삭제
     데이터 MAP을 통해서 삭제
 */
+
+const todoIDMAPElement = document.querySelector("form.idmap-form");
+const IDMAPINPUTElement = todoIDMAPElement.querySelector("input[type=text]");
+
+console.log(todoIDMAPElement);
+
+function handleIDMAPInput(_E) {
+    _E.preventDefault();
+    const idmapInput = IDMAPINPUTElement.value;
+    let map1 = new idMap(idmapInput);
+    let map2 = new idMap("히히힛");
+    console.log(map1.Get());
+    console.log(map2.Get());
+    IDMAPINPUTElement.value = "";
+}
+
+todoIDMAPElement.addEventListener("submit", handleIDMAPInput);
