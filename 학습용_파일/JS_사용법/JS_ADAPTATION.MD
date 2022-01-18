@@ -78,7 +78,7 @@ clockElement.innerText =
 이건 너무 코드가 길어
 
 그래서 다음과 같이 작성하면 된다.
-```js
+```js 
     const hours = String(date.getHours()).padStart(2,"0");
     const minutes = String(date.getMinutes()).padStart(2,"0");
     const second = String(date.getSeconds()).padStart(2,"0");
