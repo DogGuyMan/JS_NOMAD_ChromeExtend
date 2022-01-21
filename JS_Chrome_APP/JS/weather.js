@@ -1,3 +1,4 @@
+const API_KEY = 'VlZp4I5GzKzpX%2Fg48MVMtTKiBZl8MKAuhBwlVrzA%2FfKPibeIgue%2BxHA3K4%2Be2U%2F6vJ9958sBTgamtMeiYN5T%2Bg%3D%3D';
 function success(position) {
   let crd = position.coords; 
   const currentLat = crd.latitude;
@@ -15,20 +16,37 @@ const options = {
 };
 
 function GetWeather(_n) {
-  let request = new XMLHttpRequest();
   let requestURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";  
-  let queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '';
+  let queryParams = '?' + encodeURIComponent('serviceKey') + '=' + API_KEY;
+  queryParams += '&' + encodeURIComponent('numofRows') + '=' + encodeURIComponent('10');
   queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
-  queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('1000');
   queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('JSON');
   queryParams += '&' + encodeURIComponent('base_date') + '=' + encodeURIComponent(_base.date); 
   queryParams += '&' + encodeURIComponent('base_time') + '=' + encodeURIComponent(_base.time);
-  queryParams += '&' + encodeURIComponent('nx') + '=' + encodeURIComponent(String(_n.x)); /**/
+  queryParams += '&' + encodeURIComponent('nx') + '=' + encodeURIComponent(String(_n.x)); 
   queryParams += '&' + encodeURIComponent('ny') + '=' + encodeURIComponent(String(_n.y));
-  let reqWeatherJSON = request.open('GET', requestURL + queryParams);
+  const headers = new Headers({
+    'Content-Type': '*',
+  });
   console.log(requestURL + queryParams);
-  console.log(reqWeatherJSON);
+  const responseWeather = fetch((requestURL + queryParams), {
+    method: 'post',
+    headers: {
+      "Content-type" : "application/json"
+    },body: JSON.stringify({
+      dataType: 'text json'
+    }),
+  })
+  .then(function (resp){return resp.json})
+  .then(function (data){console.log('JSON REQUEST SUCCESS'), data})
+  .catch(function (error){console.log("FAILED", error)});
 }
+
+/*
+cord 오류 
+
+*/
+
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
@@ -73,3 +91,24 @@ function findXY (_currentLat, _currentLong){
   let y = Math.ceil(FloatFix( (ro - ra*Math.cos(theta)) + yo));
   return { x, y};
 }
+
+/*
+TMP : 기온 C
+SKY = [
+  {code : 0, cloud : "맑음"},
+  {code : 1, cloud : "구름 조금"},
+  {code : 2, cloud : "구름"},
+  {code : 3, cloud : "구름 많음"},
+  {code : 4, cloud : "흐림"}
+]: 하늘 상태
+VEC : 풍향 deg
+WSD : 풍속 m/s
+PTY = 
+[
+  {code : 0, rain : "없음"},
+  {code : 1, rain : "비"},
+  {code : 2, rain : "비와 눈"},
+  {code : 3, rain : "눈"},
+  {code : 4, rain : "소나기"}
+]: 강수 
+*/

@@ -32,7 +32,7 @@ function calBaseData() {
                 return {date : getYMD(yasterday), time : "2300"};
             }
             else {
-                return {date : currentTime.YMD , time : String(reserAPI[i] - 10)};
+                return {date : currentTime.YMD , time : String(reserAPI[i] - 10).padStart(4,"0")};
             }
         }
     }
