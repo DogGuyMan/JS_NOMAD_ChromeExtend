@@ -14,8 +14,8 @@ function goGeoOK(pos){
     const weatherElement = document.querySelector("div.weather-div");
     const statusSpanElement =  weatherElement.querySelector("span:nth-child(1)");
     const cityNameSpanElement = weatherElement.querySelector("span:nth-child(2)");
-    statusSpanElement.innerText = cloudStatus;
-    cityNameSpanElement.innerText = cityName; 
+    statusSpanElement.innerText = "Cloud : " + cloudStatus;
+    cityNameSpanElement.innerText = "City : " + cityName; 
   });
 }
 function onGeoError(){

@@ -13,44 +13,55 @@
 </head>
 
 <body>
-    <section>
+    <section class="background"></section>
+    <section class="background">
+        <span class="greeting"></span>
+    </section>
+    <section class="background"></section>
+    <section class="bodySection">
         <!--  ------------------------------------------------------------  -->
-        <section class="background"></section>
-        <section class="background">
-            <span class="greeting"></span>
-        </section>
-        <section class="background"></section>
-        <section class="parent">
-            <!--  ------------------------------------------------------------  -->
-            <h2 class="clock">00:00:00</h2>
-            <!--  ------------------------------------------------------------  -->
-            <!--  ------------------------------------------------------------  -->
-            <form class="login-form">
-                <div class="loginBox">
-                    <input required maxlength="15" type="text" placeholder="이름을 입력하세요" />
-                    <input class="hidden" type="submit" value="Login" />
-                </div>
-            </form>
-            <!--  ------------------------------------------------------------  -->
-            <form class="todo-form">
-                <input type="text" placeholder="오늘 할일을 적어주세요" required />
-            </form>
-            <!--  ------------------------------------------------------------  -->
-            <ul class="todo-list">
-
-            </ul>
-            <!--  ------------------------------------------------------------  -->
+        <div class="grandparent">
             <div class="weather-div">
                 <span></span>
                 <span></span>
             </div>
+            <section class="parent">
+                <!--  ------------------------------------------------------------  -->
+                <h2 class="clock">00:00:00</h2>
+                <!--  ------------------------------------------------------------  -->
+                <!--  ------------------------------------------------------------  -->
+                <form class="login-form">
+                    <div class="loginBox">
+                        <input required maxlength="15" type="text" placeholder="이름을 입력하세요" />
+                        <input class="hidden" type="submit" value="Login" />
+                    </div>
+                </form>
+                <!--  ------------------------------------------------------------  -->
+
+                <!--  ------------------------------------------------------------  -->
+                <!--  ------------------------------------------------------------  -->
+                <div class="quote-div">
+                    <span class="quote"></span>
+                    <span class="author"></span>
+                </div>
+            </section>
             <!--  ------------------------------------------------------------  -->
-            <div class="quote-div">
-                <span class="quote"></span>
-                <span class="author"></span>
-            </div>
-        </section>
-        <!--  ------------------------------------------------------------  -->
+            <section class="sideMenu">
+                <!--  ------------------------------------------------------------  -->
+                <div class="navigation">
+                    <ul class="todo-list">
+                        <li>
+                            <div class="toggle" onclick="toggleManu()">
+                                <span class="icon"></span>
+                                <form class="todo-form">
+                                    <input type="text" placeholder="오늘 할일을 적어주세요" required />
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
     </section>
     <script src="JS/Data.js"></script>
     <script defer src="JS/quotes.js"></script>
@@ -60,6 +71,12 @@
     <script src="JS/randomIndex.js"></script>
     <script src="JS/background.js"></script>
     <script src="JS/weather.js"></script>
+    <script type="text/javascript">
+        function toggleManu() {
+            let topBar = document.querySelector(".navigation");
+            topBar.classList.toggle("active");
+        }
+    </script>
 </body>
 
 </html>

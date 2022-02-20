@@ -31,3 +31,6 @@ document.querySelector("h2.clock").animate([
     iterations : Infinity
 }
 )
+const todoGlowing = document.querySelector("form.todo-form input");
+
+todoGlowing.style.boxShadow = `0px 0px 50px ${getColorRandom.second}`;

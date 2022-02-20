@@ -42,7 +42,7 @@ const quotesData = [
 ];
 
 const colorSet = [
-    {first : "#0F2027", second :"#2c5364"},
+    {first : "#0F2027", second :"#437299"},
     {first : "#12c2e9", second :"#c471ed"},
     {first : "#6DD5FA", second :"#FFF"},
     {first : "#1f4037", second :"#99f2c8"},
