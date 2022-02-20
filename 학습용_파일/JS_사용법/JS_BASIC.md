@@ -1,3 +1,23 @@
+<style>
+time.date {
+  color : #fff;
+}
+.imgOption{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 200px; 
+}
+h2{
+    font-weight :bold;
+    border : 6px solid #83dcb7;
+}
+h3 {
+    font-weight :bold;
+    border : 3px solid ;
+}
+</style>
+
 ## <span style="color : #83dcb7;">1 문자열 합치기 </span>
 ```js
 "abcdef" + "ghijkml"

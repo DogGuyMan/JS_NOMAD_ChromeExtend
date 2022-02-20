@@ -5,43 +5,53 @@
     <meta charset="UTF-8" />
     <!-- 메타 뷰포트는 모바일 브라우저에도 적합하게 함 https://aboooks.tistory.com/352 -->
     <meta name="viewport" content="width = device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/style.css" />
     <title>MOMENTUM APP</title>
 </head>
 
 <body>
-    <!--  ------------------------------------------------------------  -->
-    <h2 class="clock">00:00</h2>
-    <!--  ------------------------------------------------------------  -->
-    <h1 class="greeting"></h1>
-    <!--  ------------------------------------------------------------  -->
-    <form class="login-form">
-        <input required maxlength="15" type="text" placeholder="이름을 입력하세요" />
-        <input type="submit" value="Login" />
-    </form>
-    <!--  ------------------------------------------------------------  -->
-    <form class="todo-form">
-        <input type="text" placeholder="오늘 할일을 적어주세요" required />
-    </form>
-    <!--  ------------------------------------------------------------  -->
-    <ul class="todo-list">
+    <section>
+        <!--  ------------------------------------------------------------  -->
+        <section class="background"></section>
+        <section class="background">
+            <span class="greeting"></span>
+        </section>
+        <section class="background"></section>
+        <section class="parent">
+            <!--  ------------------------------------------------------------  -->
+            <h2 class="clock">00:00:00</h2>
+            <!--  ------------------------------------------------------------  -->
+            <!--  ------------------------------------------------------------  -->
+            <form class="login-form">
+                <div class="loginBox">
+                    <input required maxlength="15" type="text" placeholder="이름을 입력하세요" />
+                    <input class="hidden" type="submit" value="Login" />
+                </div>
+            </form>
+            <!--  ------------------------------------------------------------  -->
+            <form class="todo-form">
+                <input type="text" placeholder="오늘 할일을 적어주세요" required />
+            </form>
+            <!--  ------------------------------------------------------------  -->
+            <ul class="todo-list">
 
-    </ul>
-    <!--  ------------------------------------------------------------  -->
-    <div class="weather-div">
-        <span></span>
-        <span></span>
-    </div>
-    <!--  ------------------------------------------------------------  -->
-    <div class="quote-div">
-        <span class="quote"></span>
-        <span class="author"></span>
-    </div>
-    <!--  ------------------------------------------------------------  -->
-    <div class="background-div">
-    </div>
-    <!--  ------------------------------------------------------------  -->
-
+            </ul>
+            <!--  ------------------------------------------------------------  -->
+            <div class="weather-div">
+                <span></span>
+                <span></span>
+            </div>
+            <!--  ------------------------------------------------------------  -->
+            <div class="quote-div">
+                <span class="quote"></span>
+                <span class="author"></span>
+            </div>
+        </section>
+        <!--  ------------------------------------------------------------  -->
+    </section>
     <script src="JS/Data.js"></script>
     <script defer src="JS/quotes.js"></script>
     <script src="JS/greeting.js"></script>

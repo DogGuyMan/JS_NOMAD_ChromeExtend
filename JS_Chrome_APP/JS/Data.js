@@ -41,17 +41,25 @@ const quotesData = [
     },
 ];
 
+const colorSet = [
+    {first : "#0F2027", second :"#2c5364"},
+    {first : "#12c2e9", second :"#c471ed"},
+    {first : "#6DD5FA", second :"#FFF"},
+    {first : "#1f4037", second :"#99f2c8"},
+    {first : "#f12711", second :"#f5af19"},
+    {first : "#3e5151", second :"#decba4"},
+    {first : "#000", second : "#FFF" }
+];
+
 const imagesData = [
-    "img_(0).jpg",
-    "img_(1).jpg",
-    "img_(2).jpg",
+    "img_(1).png",
+    "img_(2).PNG",
     "img_(3).jpg",
-    "img_(4).jpg",
-    "img_(5).jpg",
-    "img_(6).jpg",
-    "img_(7).jpg",
-    "img_(8).jpg",
-    "img_(9).jpg"
+    "img_(4).PNG",
+    "img_(5).PNG",
+    "img_(6).PNG",
+    "img_(7).PNG",
+    "img_(8).PNG"
 ];
 
 class idMap {

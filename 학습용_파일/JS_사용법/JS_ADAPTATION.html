@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>no title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        time.date {
+            color: #fff;
+        }
+
+        .markdown-preview {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box
+        }
+
+        .markdown-preview .pagebreak,
+        .markdown-preview .newpage {
+            page-break-before: always
+        }
+
+        .markdown-preview pre.line-numbers {
+            position: relative;
+            padding-left: 3.8em;
+            counter-reset: linenumber
+        }
+
+        .markdown-preview pre.line-numbers>code {
+            position: relative
+        }
+
+        .markdown-preview pre.line-numbers .line-numbers-rows {
+            position: absolute;
+            pointer-events: none;
+            top: 1em;
+            font-size: 100%;
+            left: 0;
+            width: 3em;
+            letter-spacing: -1px;
+            border-right: 1px solid #999;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .markdown-preview pre.line-numbers .line-numbers-rows>span {
+            pointer-events: none;
+            display: block;
+            counter-increment: linenumber
+        }
+
+        .markdown-preview pre.line-numbers .line-numbers-rows>span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: .8em;
+            text-align: right
+        }
+
+        .markdown-preview .mathjax-exps .MathJax_Display {
+            text-align: center !important
+        }
+
+        .markdown-preview:not([for="preview"]) .code-chunk .btn-group {
+            display: none
+        }
+
+        .markdown-preview:not([for="preview"]) .code-chunk .status {
+            display: none
+        }
+
+        .markdown-preview:not([for="preview"]) .code-chunk .output-div {
+            margin-bottom: 16px
+        }
+
+        .scrollbar-style::-webkit-scrollbar {
+            width: 8px
+        }
+
+        .scrollbar-style::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent
+        }
+
+        .scrollbar-style::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgba(150, 150, 150, 0.66);
+            border: 4px solid rgba(150, 150, 150, 0.66);
+            background-clip: content-box
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode]) {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            overflow: auto
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+            position: relative;
+            top: 0
+        }
+
+        @media screen and (min-width:914px) {
+            html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+                padding: 2em calc(50% - 457px + 2em)
+            }
+        }
+
+        @media screen and (max-width:914px) {
+            html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+                padding: 2em
+            }
+        }
+
+        @media screen and (max-width:450px) {
+            html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+                font-size: 14px !important;
+                padding: 1em
+            }
+        }
+
+        @media print {
+            html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+                display: none
+            }
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+            position: fixed;
+            bottom: 8px;
+            left: 8px;
+            font-size: 28px;
+            cursor: pointer;
+            color: inherit;
+            z-index: 99;
+            width: 32px;
+            text-align: center;
+            opacity: .4
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+            opacity: 1
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            padding: 32px 0 48px 0;
+            font-size: 14px;
+            box-shadow: 0 0 4px rgba(150, 150, 150, 0.33);
+            box-sizing: border-box;
+            overflow: auto;
+            background-color: inherit
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+            width: 8px
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgba(150, 150, 150, 0.66);
+            border: 4px solid rgba(150, 150, 150, 0.66);
+            background-clip: content-box
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+            text-decoration: none
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+            padding: 0 1.6em;
+            margin-top: .8em
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li {
+            margin-bottom: .8em
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+            list-style-type: none
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+            left: 300px;
+            width: calc(100% - 300px);
+            padding: 2em calc(50% - 457px - 150px);
+            margin: 0;
+            box-sizing: border-box
+        }
+
+        @media screen and (max-width:1274px) {
+            html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+                padding: 2em
+            }
+        }
+
+        @media screen and (max-width:450px) {
+            html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+                width: 100%
+            }
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+            display: none
+        }
+
+        pre {
+            font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto;
+            line-height: 1.5;
+            tab-size: 4;
+            hyphens: none;
+            color: #abb2bf;
+            background-color: #31363f !important;
+            border: #4b5362;
+            border-radius: 3px
+        }
+
+        pre[class*="language-"] {
+            padding: 1em
+        }
+
+        code[class*="language-"] .token.comment,
+        pre[class*="language-"] .token.comment,
+        code[class*="language-"] .token.prolog,
+        pre[class*="language-"] .token.prolog,
+        code[class*="language-"] .token.doctype,
+        pre[class*="language-"] .token.doctype,
+        code[class*="language-"] .token.cdata,
+        pre[class*="language-"] .token.cdata {
+            color: #5c6370
+        }
+
+        code[class*="language-"] .namespace,
+        pre[class*="language-"] .namespace {
+            opacity: .7
+        }
+
+        code[class*="language-"] .token.constant,
+        pre[class*="language-"] .token.constant {
+            color: #d19a66
+        }
+
+        code[class*="language-"] .token.boolean,
+        pre[class*="language-"] .token.boolean,
+        code[class*="language-"] .token.number,
+        pre[class*="language-"] .token.number,
+        code[class*="language-"] .token.function-name,
+        pre[class*="language-"] .token.function-name {
+            color: #d19a66
+        }
+
+        code[class*="language-"] .token.tag,
+        pre[class*="language-"] .token.tag {
+            color: #e06c75
+        }
+
+        code[class*="language-"] .token.symbol,
+        pre[class*="language-"] .token.symbol {
+            color: #56b6c2
+        }
+
+        code[class*="language-"] .token.selector,
+        pre[class*="language-"] .token.selector {
+            color: #c678dd
+        }
+
+        code[class*="language-"] .token.attr-name,
+        pre[class*="language-"] .token.attr-name {
+            color: #d19a66
+        }
+
+        code[class*="language-"] .token.string,
+        pre[class*="language-"] .token.string {
+            color: #98c379
+        }
+
+        code[class*="language-"] .token.char,
+        pre[class*="language-"] .token.char {
+            color: #56b6c2
+        }
+
+        code[class*="language-"] .token.url,
+        pre[class*="language-"] .token.url {
+            color: #56b6c2
+        }
+
+        code[class*="language-"] .token.operator,
+        pre[class*="language-"] .token.operator {
+            color: #abb2bf
+        }
+
+        code[class*="language-"] .token.atrule,
+        pre[class*="language-"] .token.atrule,
+        code[class*="language-"] .token.attr-value,
+        pre[class*="language-"] .token.attr-value,
+        code[class*="language-"] .token.keyword,
+        pre[class*="language-"] .token.keyword {
+            color: #c678dd
+        }
+
+        code[class*="language-"] .token.function,
+        pre[class*="language-"] .token.function {
+            color: #61afef
+        }
+
+        code[class*="language-"] .token.class-name,
+        pre[class*="language-"] .token.class-name {
+            color: #e5c07b
+        }
+
+        code[class*="language-"] .token.variable,
+        pre[class*="language-"] .token.variable {
+            color: #d19a66
+        }
+
+        code[class*="language-"] .token.regex,
+        pre[class*="language-"] .token.regex {
+            color: #56b6c2
+        }
+
+        code[class*="language-"] .token.important,
+        pre[class*="language-"] .token.important {
+            color: #e06c75
+        }
+
+        code[class*="language-"] .token.important,
+        pre[class*="language-"] .token.important,
+        code[class*="language-"] .token.bold,
+        pre[class*="language-"] .token.bold {
+            font-weight: bold
+        }
+
+        code[class*="language-"] .token.italic,
+        pre[class*="language-"] .token.italic {
+            font-style: italic
+        }
+
+        code[class*="language-"] .token.entity,
+        pre[class*="language-"] .token.entity {
+            cursor: help
+        }
+
+        pre[data-line] {
+            position: relative;
+            padding: 1em 0 1em 3em
+        }
+
+        pre[data-line] .line-highlight-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            display: block;
+            width: 100%
+        }
+
+        pre[data-line] .line-highlight {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: inherit 0;
+            margin-top: 1em;
+            background: rgba(153, 122, 102, 0.08);
+            background: linear-gradient(to right, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+            pointer-events: none;
+            line-height: inherit;
+            white-space: pre
+        }
+
+        pre[data-line] .line-highlight:before,
+        pre[data-line] .line-highlight[data-end]:after {
+            content: attr(data-start);
+            position: absolute;
+            top: .4em;
+            left: .6em;
+            min-width: 1em;
+            padding: 0 .5em;
+            background-color: rgba(153, 122, 102, 0.4);
+            color: #f5f2f0;
+            font: bold 65%/1.5 sans-serif;
+            text-align: center;
+            vertical-align: .3em;
+            border-radius: 999px;
+            text-shadow: none;
+            box-shadow: 0 1px white
+        }
+
+        pre[data-line] .line-highlight[data-end]:after {
+            content: attr(data-end);
+            top: auto;
+            bottom: .4em
+        }
+
+        .emoji {
+            height: 0.8em;
+        }
+
+        html body {
+            font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: hsl(220, 14%, 71%);
+            background-color: hsl(220, 13%, 18%);
+            overflow: initial;
+            box-sizing: border-box;
+            word-wrap: break-word
+        }
+
+        html body>:first-child {
+            margin-top: 0
+        }
+
+        html body h1,
+        html body h2,
+        html body h3,
+        html body h4,
+        html body h5,
+        html body h6 {
+            line-height: 1.2;
+            margin-top: 1em;
+            margin-bottom: 16px;
+            color: hsl(0, 0%, 100%)
+        }
+
+        html body h1 {
+            font-size: 2.25em;
+            font-weight: 300;
+            padding-bottom: .3em
+        }
+
+        html body h2 {
+            font-size: 1.75em;
+            font-weight: 400;
+            padding-bottom: .3em
+        }
+
+        html body h3 {
+            font-size: 1.5em;
+            font-weight: 500
+        }
+
+        html body h4 {
+            font-size: 1.25em;
+            font-weight: 600
+        }
+
+        html body h5 {
+            font-size: 1.1em;
+            font-weight: 600
+        }
+
+        html body h6 {
+            font-size: 1em;
+            font-weight: 600
+        }
+
+        html body h1,
+        html body h2,
+        html body h3,
+        html body h4,
+        html body h5 {
+            font-weight: 600
+        }
+
+        html body h5 {
+            font-size: 1em
+        }
+
+        html body h6 {
+            color: hsl(220, 14%, 55%)
+        }
+
+        html body strong {
+            color: hsl(0, 0%, 100%)
+        }
+
+        html body del {
+            color: hsl(220, 14%, 55%)
+        }
+
+        html body a:not([href]) {
+            color: inherit;
+            text-decoration: none
+        }
+
+        html body a {
+            color: #56b6c2;
+            text-decoration: none
+        }
+
+        html body a:hover {
+            color: #74c3cd;
+            text-decoration: none
+        }
+
+        html body img {
+            max-width: 100%
+        }
+
+        html body>p {
+            margin-top: 0;
+            margin-bottom: 16px;
+            word-wrap: break-word
+        }
+
+        html body>ul,
+        html body>ol {
+            margin-bottom: 16px
+        }
+
+        html body ul,
+        html body ol {
+            padding-left: 2em
+        }
+
+        html body ul.no-list,
+        html body ol.no-list {
+            padding: 0;
+            list-style-type: none
+        }
+
+        html body ul ul,
+        html body ul ol,
+        html body ol ol,
+        html body ol ul {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        html body li {
+            margin-bottom: 0
+        }
+
+        html body li.task-list-item {
+            list-style: none
+        }
+
+        html body li>p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        html body .task-list-item-checkbox {
+            margin: 0 .2em .25em -1.8em;
+            vertical-align: middle
+        }
+
+        html body .task-list-item-checkbox:hover {
+            cursor: pointer
+        }
+
+        html body blockquote {
+            margin: 16px 0;
+            font-size: inherit;
+            padding: 0 15px;
+            color: hsl(220, 14%, 55%);
+            background-color: hsl(220, 13%, 26%);
+            border-left: 4px solid hsl(220, 13%, 34%)
+        }
+
+        html body blockquote>:first-child {
+            margin-top: 0
+        }
+
+        html body blockquote>:last-child {
+            margin-bottom: 0
+        }
+
+        html body hr {
+            height: 4px;
+            margin: 32px 0;
+            background-color: hsl(220, 13%, 34%);
+            border: 0 none
+        }
+
+        html body table {
+            margin: 10px 0 15px 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            display: block;
+            width: 100%;
+            overflow: auto;
+            word-break: normal;
+            word-break: keep-all
+        }
+
+        html body table th {
+            font-weight: bold;
+            color: hsl(0, 0%, 100%)
+        }
+
+        html body table td,
+        html body table th {
+            border: 1px solid hsl(220, 13%, 34%);
+            padding: 6px 13px
+        }
+
+        html body dl {
+            padding: 0
+        }
+
+        html body dl dt {
+            padding: 0;
+            margin-top: 16px;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: bold
+        }
+
+        html body dl dd {
+            padding: 0 16px;
+            margin-bottom: 16px
+        }
+
+        html body code {
+            font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+            font-size: .85em !important;
+            color: hsl(0, 0%, 100%);
+            background-color: hsl(220, 13%, 26%);
+            border-radius: 3px;
+            padding: .2em 0
+        }
+
+        html body code::before,
+        html body code::after {
+            letter-spacing: -0.2em;
+            content: "\00a0"
+        }
+
+        html body pre>code {
+            padding: 0;
+            margin: 0;
+            font-size: .85em !important;
+            word-break: normal;
+            white-space: pre;
+            background: transparent;
+            border: 0
+        }
+
+        html body .highlight {
+            margin-bottom: 16px
+        }
+
+        html body .highlight pre,
+        html body pre {
+            padding: 1em;
+            overflow: auto;
+            font-size: .85em !important;
+            line-height: 1.45;
+            border: hsl(220, 13%, 34%);
+            border-radius: 3px
+        }
+
+        html body .highlight pre {
+            margin-bottom: 0;
+            word-break: normal
+        }
+
+        html body pre code,
+        html body pre tt {
+            display: inline;
+            max-width: initial;
+            padding: 0;
+            margin: 0;
+            overflow: initial;
+            line-height: inherit;
+            word-wrap: normal;
+            background-color: transparent;
+            border: 0
+        }
+
+        html body pre code:before,
+        html body pre tt:before,
+        html body pre code:after,
+        html body pre tt:after {
+            content: normal
+        }
+
+        html body p,
+        html body blockquote,
+        html body ul,
+        html body ol,
+        html body dl,
+        html body pre {
+            margin-top: 0;
+            margin-bottom: 16px
+        }
+
+        html body kbd {
+            color: hsl(0, 0%, 100%);
+            border: 1px solid hsl(220, 13%, 34%);
+            border-bottom: 2px solid hsl(220, 13%, 28%);
+            padding: 2px 4px;
+            background-color: hsl(220, 13%, 26%);
+            border-radius: 3px
+        }
+
+        @media print {
+            html body {
+                background-color: hsl(220, 13%, 18%)
+            }
+
+            html body h1,
+            html body h2,
+            html body h3,
+            html body h4,
+            html body h5,
+            html body h6 {
+                color: hsl(0, 0%, 100%);
+                page-break-after: avoid
+            }
+
+            html body blockquote {
+                color: hsl(220, 14%, 55%)
+            }
+
+            html body pre {
+                page-break-inside: avoid
+            }
+
+            html body table {
+                display: table
+            }
+
+            html body img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%
+            }
+
+            html body pre,
+            html body code {
+                word-wrap: break-word;
+                white-space: pre
+            }
+        }
+
+        /* Please visit the URL below for more information: */
+        /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+    </style>
+
+</head>
+
+<body for="html-export">
+    <div class="mume markdown-preview">
+        <html>
+
+        <head></head>
+
+        <body>
+            <div>
+                <style>
+                    time.date {
+                        color: #fff;
+                    }
+
+                    .imgOption {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 800px;
+                    }
+
+                    h2 {
+                        font-weight: bold;
+                        border: 6px solid #83dcb7;
+                    }
+
+                    h3 {
+                        font-weight: bold;
+                        border: 3px solid;
+                    }
+                </style>
+                <h2 class="mume-header"
+                    id="span-stylecolor-83dcb71-html-attribute%EB%A5%BC-%ED%86%B5%ED%95%9C-range%EC%A0%9C%ED%95%9Cspan">
+                    <span style="color : #83dcb7;">1. html attribute&#xB97C; &#xD1B5;&#xD55C;
+                        Range&#xC81C;&#xD55C;</span>
+                </h2>
+
+                <p>&#xB9CC;&#xC57D; input&#xC758; &#xD14D;&#xC2A4;&#xD2B8;&#xB97C; &#xCD5C;&#xB300;
+                    15&#xAE00;&#xC790;&#xB85C;&#xC81C;&#xD55C;&#xD558;&#xACE0; &#xC2F6;&#xC73C;&#xBA74;
+                    &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xB2E4;.</p>
+                <ol>
+                    <li>&#xC77C;&#xB2E8; form &#xD615;&#xD0DC;&#xB85C;
+                        &#xC791;&#xC131;&#xB418;&#xC5B4;&#xC57C;&#xD55C;&#xB2E4;
+                        <ul>
+                            <li>div&#xC640; &#xAC19;&#xC740;&#xAC78;&#xB85C; &#xAC10;&#xC2F8;&#xBD24;&#xC790;
+                                &#xC758;&#xBBF8;&#xAC00; &#xC5C6;&#xC74C;</li>
+                        </ul>
+                    </li>
+                </ol>
+                <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">required</span> <span class="token attr-name">maxlength</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>15<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>What is your name?<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</pre><img class="imgOption" src="https://i.imgur.com/ZoNyiLU.png">
+                <p>&#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xC544;&#xC608; &#xB354;&#xC774;&#xC0C1;
+                    &#xC791;&#xC131;&#xC774; &#xB418;&#xC9C8; &#xC54A;&#xB294;&#xB2E4;.</p>
+                <h2 class="mume-header" id="span-stylecolor-83dcb72-_eventpreventdefaultspan"><span
+                        style="color : #83dcb7;">2. <em>_EVENT</em>.preventDefault()</span></h2>
+
+                <p>type&#xC5D0; &#xB530;&#xB978; &#xC774;&#xBCA4;&#xD2B8;&#xB97C; &#xB9C9;&#xB294;&#xAC83;<br>
+                    &#xAE30;&#xBCF8; &#xB3D9;&#xC791;&#xC744; &#xC2E4;&#xD589;&#xD558;&#xC9C0; &#xC54A;&#xB3C4;&#xB85D;
+                    &#xC9C0;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</p>
+                <p><em>submit</em><br>
+                    submit&#xC758; &#xACBD;&#xC6B0; &#xC81C;&#xCD9C;&#xD588;&#xC744;&#xC2DC;
+                    &#xD398;&#xC774;&#xC9C0;&#xAC00; &#xC0C8;&#xB85C;&#xACE0;&#xCE68;&#xC774; &#xB418;&#xB294;
+                    &#xAE30;&#xBCF8; &#xB3D9;&#xC791;&#xC774; &#xC788;&#xB2E4;</p>
+                <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Login<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+                <p><em>click</em><br>
+                    click&#xC758; &#xACBD;&#xC6B0; &#xD074;&#xB9AD; &#xB3D9;&#xC791;&#xC744; &#xB9C9;&#xB294;&#xAC83;
+                </p>
+                <p><em>link</em><br>
+                    link&#xC758; &#xAE30;&#xBCF8;&#xB3D9;&#xC791;&#xC740; &#xB9C1;&#xD06C;&#xB85C;
+                    &#xC774;&#xB3D9;&#xD558;&#xAE30;</p>
+                <h2 class="mume-header"
+                    id="span-stylecolor-83dcb73-%EB%82%B4%EA%B0%80%EC%8B%A4%ED%96%89%ED%95%9C-%EC%9D%B4%EB%B2%A4%ED%8A%B8%ED%99%95%EC%9D%B8span">
+                    <span style="color : #83dcb7;">3. &#xB0B4;&#xAC00;&#xC2E4;&#xD589;&#xD55C;
+                        &#xC774;&#xBCA4;&#xD2B8;&#xD655;&#xC778;</span>
+                </h2>
+
+                <p>&#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xC5B4;&#xB5A4; &#xC774;&#xBCA4;&#xD2B8;&#xB97C;
+                    &#xBC8C;&#xC600;&#xB294;&#xC9C0; &#xD654;&#xC778;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+                <pre data-role="codeBlock" data-info class="language-"><code>function listener(_E) {
+    console.log(_E)
+}
+_TARGET.addEventlistener(type, listener)
+</code></pre><img class="imgOption" src="https://i.imgur.com/fUGoi4h.png">
+                <h2 class="mume-header" id="span-stylecolor-83dcb74-%EB%B0%B1%ED%8B%B1-%EB%AC%B8%EC%9E%90%EC%97%B4span">
+                    <span style="color : #83dcb7;">4. &#xBC31;&#xD2F1; &#xBB38;&#xC790;&#xC5F4;</span>
+                </h2>
+
+                <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">HELLO </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>_VAR<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</pre>
+                <h2 class="mume-header" id="span-stylecolor-83dcb75-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0span"><span
+                        style="color : #83dcb7;">5. &#xC800;&#xC7A5;&#xD558;&#xAE30;</span></h2>
+
+                <p>localStorage : Key - Value</p>
+                <p>&#xAC1C;&#xBC1C;&#xC790; &#xB3C4;&#xAD6C;&#xC5D0;&#xC11C; Application &#xBA54;&#xB274;&#xC5D0;
+                    &#xD655;&#xC778;&#xAC00;&#xB2A5;</p>
+                <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token dom variable">localStorage</span><span class="token punctuation">.</span><span class="token method function property-access">setItem</span><span class="token punctuation">(</span><span class="token punctuation">,</span><span class="token punctuation">,</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token dom variable">localStorage</span><span class="token punctuation">.</span><span class="token method function property-access">getItem</span><span class="token punctuation">(</span><span class="token punctuation">,</span><span class="token punctuation">,</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">//if &#xAC12;&#xC774; &#xC5C6;&#xB2E4;&#xBA74; null&#xAC12; &#xBC18;&#xD658;</span>
+   <span class="token comment">//=== &#xC73C;&#xB85C; &#xC720;&#xBB34;&#xD310;&#xB2E8;&#xD558;&#xC790;.</span>
+</pre>
+                <p><a
+                        href="https://felipuss.tistory.com/entry/%EB%85%B8%EB%A7%88%EB%93%9C-%EC%BD%94%EB%8D%94-%ED%8C%81-JSLOCALSTORAGE">&#xC880;&#xB354;
+                        &#xC815;&#xD655;&#xD55C; localstorage JS_LOCALSTORAGE</a></p>
+                <hr>
+                <h1 class="mume-header" id="clockjs">Clock.js</h1>
+
+                <h2 class="mume-header" id="span-stylecolor-83dcb71-setintervalsettimeout-span"><span
+                        style="color : #83dcb7;">1. setInterval/setTimeout </span></h2>
+
+                <p>setInterval : &#xC77C;&#xC815; &#xC2DC;&#xAC04;&#xAC04;&#xACA9;&#xC744;&#xB450;&#xACE0;
+                    &#xD568;&#xC218;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xBC29;&#xBC95;<br>
+                    setTimeout : &#xC77C;&#xC815;&#xC2DC;&#xAC04;&#xC774; &#xC9C0;&#xB09C;&#xD6C4;&#xC5D0;
+                    &#xD568;&#xC218;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xBC29;&#xBC95;</p>
+                <h2 class="mume-header" id="span-stylecolor-83dcb72-padstart-span"><span style="color : #83dcb7;">2.
+                        padStart() </span></h2>
+
+                <p>padStart(&#xACE0;&#xC815;&#xBB38;&#xC790;&#xC5F4;&#xAE38;&#xC774;, &#xCC44;&#xC6B8;&#xBB38;&#xC790;)
+                </p>
+                <pre data-role="codeBlock" data-info="js" class="language-javascript">clockElement<span class="token punctuation">.</span><span class="token property-access">innerText</span> <span class="token operator">=</span> 
+   <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getHours</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getMinutes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">parseInt</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token method function property-access">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> 
+         <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">0</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> date<span class="token punctuation">.</span><span class="token method function property-access">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+   </span><span class="token template-punctuation string">`</span></span>
+</pre>
+                <p>&#xC774;&#xAC74; &#xB108;&#xBB34; &#xCF54;&#xB4DC;&#xAC00; &#xAE38;&#xC5B4;</p>
+                <p>&#xADF8;&#xB798;&#xC11C; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xC791;&#xC131;&#xD558;&#xBA74;
+                    &#xB41C;&#xB2E4;.</p>
+                <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token keyword keyword-const">const</span> hours <span class="token operator">=</span> <span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token method function property-access">getHours</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">padStart</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> minutes <span class="token operator">=</span> <span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token method function property-access">getMinutes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">padStart</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> second <span class="token operator">=</span> <span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token method function property-access">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">padStart</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    clockElement<span class="token punctuation">.</span><span class="token property-access">innerText</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hours<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>minutes<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>second<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</pre>
+                <h1 class="mume-header" id="quotes">Quotes</h1>
+
+                <h2 class="mume-header" id="span-stylecolor-83dcb7-mathrandom-span"><span style="color : #83dcb7;">
+                        Math.random() </span></h2>
+
+                <p>Math.random()<br>
+                    0&#xACFC; 1 &#xC0AC;&#xC774;&#xC758; &#xB09C;&#xC218;&#xB97C;
+                    &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.<br>
+                    Math.round(x)<br>
+                    &#xC22B;&#xC790;&#xC5D0;&#xC11C; &#xAC00;&#xC7A5; &#xAC00;&#xAE4C;&#xC6B4; &#xC815;&#xC218;&#xB97C;
+                    &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+                <h1 class="mume-header" id="background">BackGround</h1>
+
+                <h2 class="mume-header" id="span-stylecolor-83dcb7-documentcreateelement-span"><span
+                        style="color : #83dcb7;"> document.createElement </span></h2>
+
+                <p>&#xBC14;&#xB85C; &#xC801;&#xC6A9;&#xD560;&#xC218; &#xC788;&#xB294;&#xAC8C;
+                    &#xC544;&#xB2C8;&#xB77C;<br>
+                    &#xC77C;&#xB2E8; HTML&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; &#xC218; &#xC788;&#xB294; Element&#xB97C;
+                    &lt;&gt; &#xD615;&#xC2DD;&#xC73C;&#xB85C; &#xB9CC;&#xB4E4; &#xC218; &#xC788;&#xB2E4;.</p>
+                <p>&#x25BD; &#xC774;&#xC81C; &#xBCF8;&#xACA9;&#xC801;&#xC73C;&#xB85C; &#xC6D0;&#xD558;&#xB294;
+                    &#xC704;&#xCE58;&#xC5D0; &#xC801;&#xC6A9;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; &#xB2E4;&#xC74C;
+                    &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC368;&#xC57C;&#xD55C;&#xB2E4; &#x25BD;</p>
+                <h2 class="mume-header" id="span-stylecolor-83dcb7-appendchild-span"><span style="color : #83dcb7;">
+                        .appendChild() </span></h2>
+
+                <h1 class="mume-header" id="todolist">ToDoLIST</h1>
+
+                <p><a
+                        href="https://felipuss.tistory.com/entry/%EB%85%B8%EB%A7%88%EB%93%9C-%EC%BD%94%EB%8D%94-%ED%8C%81-%EB%A1%9C%EC%BB%AC-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%A0%80%EC%9E%A5-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">&#xB85C;&#xCEEC;&#xC2A4;&#xD1A0;&#xB9AC;&#xC9C0;&#xC800;&#xC7A5;&#xBD88;&#xB7EC;&#xC624;&#xAE30;
+                        &#xAF2D; &#xC77D;&#xC5B4;&#xC57C;&#xD560;&#xAC83;</a></p>
+                <h2 class="mume-header"
+                    id="span-stylecolor-83dcb7-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B0%9C%EC%83%9D%EC%A2%8C%ED%91%9C-span">
+                    <span style="color : #83dcb7;"> &#xC774;&#xBCA4;&#xD2B8; &#xBC1C;&#xC0DD;&#xC88C;&#xD45C; </span>
+                </h2>
+
+                <p>&#xB0B4;&#xAC00; &#xBC1C;&#xC0DD;&#xC2DC;&#xD0A8; &#xC774;&#xBCA4;&#xD2B8;&#xC758;
+                    &#xC704;&#xCE58;&#xAC00; &#xC815;&#xD655;&#xD788; &#xC5B4;&#xB514;&#xC778;&#xC9C0;
+                    &#xD655;&#xC778;&#xD558;&#xACE0; &#xC2F6;&#xC744;&#xB54C;</p>
+                <ol>
+                    <li>&#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108;&#xB97C; &#xAC00;&#xC9C0;&#xACE0;
+                        console.dir&#xCD9C;&#xB825;</li>
+                    <li>target&#xC774;&#xB098; &#xC88C;&#xD45C;&#xB97C; &#xB2E8;&#xC11C;&#xB97C; &#xC5BB;&#xC790;</li>
+                    <li>target&#xC5D0;&#xB294; parentElement&#xB77C;&#xB294;&#xAC83;&#xC774; &#xC788;&#xB2E4;.</li>
+                </ol>
+                <p>&#xBC84;&#xADF8; &#xBC1C;&#xACAC;</p>
+                <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword keyword-function">function</span> <span class="token function">deleteTODO</span><span class="token punctuation">(</span><span class="token parameter">_E</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword control-flow keyword-if">if</span><span class="token punctuation">(</span>_E<span class="token punctuation">.</span><span class="token property-access">target</span><span class="token punctuation">.</span><span class="token property-access">localName</span> <span class="token operator">===</span> <span class="token string">&quot;button&quot;</span> <span class="token operator">||</span> _E<span class="token punctuation">.</span><span class="token property-access">target</span><span class="token punctuation">.</span><span class="token property-access">innerText</span> <span class="token operator">===</span> <span class="token string">&quot;&#x274C;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-const">const</span> deleteTarget <span class="token operator">=</span> _E<span class="token punctuation">.</span><span class="token property-access">target</span><span class="token punctuation">.</span><span class="token property-access">parentElement</span><span class="token punctuation">.</span><span class="token property-access">parentElement</span><span class="token punctuation">;</span>
+        deleteTarget<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+                <p>&#xC5EC;&#xAE30;&#xC5D0;&#xC11C; target.localName&#xC744; &#xD55C;&#xC815;&#xD558;&#xC9C0;
+                    &#xC54A;&#xC73C;&#xBA74; &#xC544;&#xB798;&#xC758; &#xD30C;&#xB780;&#xBD80;&#xBD84;
+                    &#xD074;&#xB9AD;&#xC2DC;</p>
+                <p><img class="imgOption" src="https://i.imgur.com/B5Mbd2G.png
+"></p>
+                <p>&#xC0C1;&#xC704; &#xD0DC;&#xADF8;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC774; &#xC804;&#xBD80;
+                    &#xC0AD;&#xC81C;&#xB418;&#xB294; &#xBC84;&#xADF8;&#xAC00; &#xC788;&#xB2E4;.<br>
+                    &#xB530;&#xB77C;&#xC11C; li &#xBD80;&#xBD84;&#xC744; &#xD074;&#xB9AD;&#xD558;&#xC9C0;
+                    &#xBABB;&#xD558;&#xAC8C; &#xB9C9;&#xC544;&#xC918;&#xC57C;&#xD55C;&#xB2E4;.</p>
+                <h2 class="mume-header" id="span-stylecolor-83dcb7-jsonspan"><span style="color : #83dcb7;"> JSON</span>
+                </h2>
+
+                <h3 class="mume-header" id="jsonstringify___">JSON.stringify(___)</h3>
+
+                <p>&#xC5B4;&#xB5A4; &#xC815;&#xCCB4;&#xBD88;&#xBA85;&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C;
+                    string&#xC73C;&#xB85C; &#xBCC0;&#xD658;&#xD574;&#xC8FC;&#xB294;
+                    &#xCF54;&#xB4DC;&#xC774;&#xB2E4;.<br>
+                    &#xB530;&#xB77C;&#xC11C; localstorage &#xC800;&#xC7A5;&#xC2DC; &#xB2E4;&#xC74C;&#xC744;
+                    &#xC751;&#xC6A9;&#xD55C;&#xB2E4;&#xBA74;</p>
+                <img class="imgOption" src="https://i.imgur.com/h0yKebQ.png">
+                &#xC640; &#xAC19;&#xC774; &#xC800;&#xC7A5;&#xAC00;&#xB2A5;&#xD558;&#xB2E4;.
+                <h3 class="mume-header" id="jsonparge">JSON.parge</h3>
+
+                <p>&#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xAC00;&#xC838;&#xC628; &#xB370;&#xC774;&#xD130;&#xB97C;
+                    &#xD30C;&#xC2F1;&#xD574;&#xC11C; arr&#xC73C;&#xB85C;
+                    &#xC800;&#xC7A5;&#xAC00;&#xB2A5;&#xD558;&#xB2E4;.</p>
+                <h2 class="mume-header" id="span-stylecolor-83dcb7-arrayspan"><span style="color : #83dcb7;">
+                        Array</span></h2>
+
+                <p><em>forEach</em></p>
+                <pre data-role="codeBlock" data-info="js" class="language-javascript">parsedTODOs<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token parameter">i</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+                <p><em>filter(<strong>&#xD558;&#xB098;&#xC758; &#xC6D0;&#xC18C;&#xB97C; &#xBC1B;&#xACE0; -&gt;
+                            T/F&#xB85C; &#xBC18;&#xD55C;&#xB418;&#xB294; &#xC870;&#xAC74;&#xBB38;&#xD639;&#xC740;
+                            &#xD568;&#xC218;</strong>)</em><br>
+                    O(N)&#xC73C;&#xB85C; &#xC9C4;&#xD589;&#xB418;&#xB294; &#xC0AD;&#xC81C;&#xBA85;&#xB839;&#xC5B4;<br>
+                    true -&gt; &#xC0AD;&#xC81C; &#xC548;&#xB428;<br>
+                    false -&gt; &#xC0AD;&#xC81C;</p>
+                <pre data-role="codeBlock" data-info class="language-"><code>filter(sextFunction)
+sextFunction(&#xC6D0;&#xC18C;){
+    ...&#xC6D0;&#xC18C;&#xAC12;&#xC744;&#xAC00;&#xC9C0;&#xACE0; &#xC870;&#xAC74;&#xBB38; &#xB9CC;&#xB4E4;&#xAE30;...
+    return T/F; 
+}
+</code></pre>
+                <pre data-role="codeBlock" data-info class="language-"><code>at: &#x192; at()
+concat: &#x192; concat()
+constructor: &#x192; Array()
+copyWithin: &#x192; copyWithin()
+entries: &#x192; entries()
+every: &#x192; every()
+fill: &#x192; fill()
+filter: &#x192; filter()
+find: &#x192; find()
+findIndex: &#x192; findIndex()
+findLast: &#x192; findLast()
+findLastIndex: &#x192; findLastIndex()
+flat: &#x192; flat()
+flatMap: &#x192; flatMap()
+forEach: &#x192; forEach()
+includes: &#x192; includes()
+indexOf: &#x192; indexOf()
+join: &#x192; join()
+keys: &#x192; keys()
+lastIndexOf: &#x192; lastIndexOf()
+length: 0
+map: &#x192; map()
+pop: &#x192; pop()
+push: &#x192; push()
+reduce: &#x192; reduce()
+reduceRight: &#x192; reduceRight()
+reverse: &#x192; reverse()
+shift: &#x192; shift()
+slice: &#x192; slice()
+some: &#x192; some()
+sort: &#x192; sort()
+splice: &#x192; splice()
+toLocaleString: &#x192; toLocaleString()
+toString: &#x192; toString()
+unshift: &#x192; unshift()
+values: &#x192; values()
+</code></pre>
+                <h2 class="mume-header"
+                    id="span-stylecolor-83dcb7-map-array-element%EB%A5%BC-%ED%8A%B9%EC%A0%95%ED%95%98%EC%9E%90span">
+                    <span style="color : #83dcb7;"> Map-Array Element&#xB97C; &#xD2B9;&#xC815;&#xD558;&#xC790;</span>
+                </h2>
+
+                <p>&#xC5B4;&#xB290; &#xB370;&#xC774;&#xD130;&#xAC00;
+                    &#xC9C0;&#xC6CC;&#xC838;&#xC57C;&#xD558;&#xB294;&#xC9C0;
+                    &#xC2DD;&#xBCC4;&#xD558;&#xAE30;&#xC704;&#xD578; id&#xAC00; &#xD3EC;&#xD568;&#xB41C;
+                    &#xB370;&#xC774;&#xD130;&#xB97C; &#xB9CC;&#xB4E4;&#xC790;.</p>
+                <pre data-role="codeBlock" data-info class="language-"><code>const map {
+    key : value;
+}
+
+array.push(map());
+</code></pre>
+            </div>
+        </body>
+
+        </html>
+    </div>
+</body>
+
+</html>

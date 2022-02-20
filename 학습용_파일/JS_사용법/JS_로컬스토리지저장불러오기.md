@@ -1,3 +1,23 @@
+<style>
+time.date {
+  color : #fff;
+}
+.imgOption{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 800px; 
+}
+h2{
+    font-weight :bold;
+    border : 6px solid #83dcb7;
+}
+h3 {
+    font-weight :bold;
+    border : 3px solid ;
+}
+</style>
+
 ### 1. 저장하기
 로컬 스토리지 저장은 Key-value 형식으로 저장된다.
 value는 단일값이든, 배열이든 저장을하긴하는데 String 형식으로 저장한다.

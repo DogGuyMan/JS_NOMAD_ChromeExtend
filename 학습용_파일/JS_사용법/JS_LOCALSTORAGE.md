@@ -1,4 +1,25 @@
-할수있는 동작
+<style>
+time.date {
+  color : #fff;
+}
+.imgOption{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 800px; 
+}
+h2{
+    font-weight :bold;
+    border : 6px solid #83dcb7;
+}
+h3 {
+    font-weight :bold;
+    border : 3px solid ;
+}
+</style>
+
+
+### 할수있는 동작
 보관, 가져오기, 삭제(ALL), key반환, 개수
 
 # localStorge

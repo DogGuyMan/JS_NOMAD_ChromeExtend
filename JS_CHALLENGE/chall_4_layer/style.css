@@ -1,0 +1,38 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/*
+    div는 텍스트 차지하는영역만큼 차지하는데
+    section은 존나큰 블록이다
+    따라서 background 쓰려면 section 써야함
+*/
+section.layer:nth-child(2) {
+    z-index: -2;
+    position: absolute;
+    top: 0;left: 0;width: 100%;
+    background : center no-repeat url("concept_atom18.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+
+/*
+    background-size: cover;
+    background-attachment: fixed;
+    background : center no-repeat url("concept_atom18.jpg");
+*/
+
+section.layer:nth-child(1){
+    z-index: -1;
+    mix-blend-mode: overlay;
+}

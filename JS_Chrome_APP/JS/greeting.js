@@ -7,7 +7,7 @@ const loginForm = document.querySelector(".login-form");
     //document.querySelectorAll("selector[myAttribute='aValue']");
 const loginInput = loginForm.querySelector("input[type=text]");
 const loginSubmit = loginForm.querySelector("input[type=submit]")
-const greetingTitle = document.querySelector("h1.greeting")
+const greetingTitle = document.querySelector("span.greeting")
 
 const HIDE_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";

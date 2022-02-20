@@ -1,5 +1,5 @@
-function randomIndex(_quoteData){
-    const size = _quoteData.length
+function randomIndex(_objectData){
+    const size = _objectData.length
     randIndexData = Math.floor(Math.random() * size);
     return randIndexData;
 }
